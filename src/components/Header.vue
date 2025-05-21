@@ -2,11 +2,14 @@
     <header class="site-header">
         <nav class="navbar">
             <h1 class="logo">Liminal Notes</h1>
-            <ul class="nav-links">
+            <ul v-show="isLoggedIn" class="nav-links">
                 <li><router-link to="notes"> Notes</router-link></li>
                 <li><router-link to="about"> About</router-link></li>
                 <li><router-link to="settings"> Settings</router-link></li>
                 <li><router-link to="logout"> Logout</router-link></li>
+            </ul>
+            <ul class="nav-links">
+                <li><router-link to="login"> Login</router-link></li>
             </ul>
         </nav>
     </header>
@@ -16,7 +19,7 @@
     export default{
         data(){
             return{
-                
+                isLoggedIn: false
             }
         },
         methods: {

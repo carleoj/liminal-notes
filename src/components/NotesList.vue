@@ -22,22 +22,28 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: "NotesList",
   data() {
     return {
-      notes: [
-        { id: 1, title: "School Tips", content: "Always pay attention to the adviser." },
-        { id: 2, title: "Grocery List", content: "Apples, Bananas, Milk, Bread" },
-        { id: 3, title: "Project Ideas", content: "Build a note app like Google Keep." },
-        { id: 4, title: "Reminder", content: "Call John about Vue project." },
-        { id: 5, title: "Quote", content: "Simplicity is the soul of efficiency." },
-        { id: 6, title: "Goals", content: "Learn Vue 3 Composition API" },
-      ],
+      notes: [],
       selectedNote: null,
     };
   },
+  mounted(){
+    this.fetchAllNotes()
+  },
   methods: {
+    async fetchAllNotes() {
+      try{
+        const res = await axios.get('/api/notes/3')
+        this.notes = res.data
+      }
+      catch(error){
+        console.error('Fetch error:', error)
+      }
+    },
     openModal(note) {
       this.selectedNote = note;
     },

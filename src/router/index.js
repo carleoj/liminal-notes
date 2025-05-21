@@ -1,8 +1,9 @@
-import { createRouter, createWebHistory, } from 'vue-router'
-import NotesList from '@/components/NotesList.vue'
-import About from '@/components/About.vue'
+import { createRouter, createWebHistory, } from 'vue-router';
+import NotesList from '@/components/NotesList.vue';
+import About from '@/components/About.vue';
 import Settings from '@/components/Settings.vue';
 import Logout from '@/components/Logout.vue';
+import Login from '@/components/Login.vue;'
 
 const routes = [
     {
@@ -17,9 +18,13 @@ const routes = [
         path: '/settings',
         component: Settings
     },
-     {
+    {
         path: '/logout',
         component: Logout
+    },
+    {
+        path: '/login',
+        component: Login
     }
 ];
 

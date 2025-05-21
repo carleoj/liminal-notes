@@ -6,7 +6,7 @@
         {{ user.name }} ({{ user.username }})
       </li>
     </ul>
-  </div>
+  </div>  
 </template>
 
 <script>
@@ -14,19 +14,19 @@ import axios from 'axios'
 export default {
   data(){
     return{
-      users: []
+      users: [],
     }
   },
   mounted(){
-    this.fetchAllUsers()
+    this.fetchAllUser()
   },
   methods: {
-    async fetchAllUsers() {
+    async fetchAllUser() {
       try{
-        const res = await axios.get('/api')
+        const res = await axios.get('/api/users')
         this.users = res.data
       }catch(error){
-        console.error('Fetch error:', error)
+        console.error('Fetch error: ', error)
       }
     }
   }
