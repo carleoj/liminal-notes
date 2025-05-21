@@ -1,12 +1,14 @@
-<script setup>
-import Header from './components/Header.vue'
-</script>
+  <script setup>
+  import Header from './components/Header.vue'
+  </script>
 
-<template>
-  <Header />
-  <router-view />
-</template>
+  <template>
+    <div>
+      <Header />
+      <router-view />
+    </div>
+  </template>
 
-<style scoped>
+  <style scoped>
 
-</style>
+  </style>

@@ -1,0 +1,37 @@
+<template>
+  <div>
+    <h2>Users' Names: </h2>
+    <ul>
+      <li v-for="user in users" :key="user.id">
+        {{ user.name }} ({{ user.username }})
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+export default {
+  data(){
+    return{
+      users: []
+    }
+  },
+  mounted(){
+    this.fetchAllUsers()
+  },
+  methods: {
+    async fetchAllUsers() {
+      try{
+        const res = await axios.get('/api')
+        this.users = res.data
+      }catch(error){
+        console.error('Fetch error:', error)
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+</style>

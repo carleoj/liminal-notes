@@ -4,9 +4,9 @@
             <h1 class="logo">Liminal Notes</h1>
             <ul class="nav-links">
                 <li><router-link to="notes"> Notes</router-link></li>
-                <li><router-link to="/"> About</router-link></li>
-                <li><router-link to="/"> Settings</router-link></li>
-                <li><router-link to="/"> Logout</router-link></li>
+                <li><router-link to="about"> About</router-link></li>
+                <li><router-link to="settings"> Settings</router-link></li>
+                <li><router-link to="logout"> Logout</router-link></li>
             </ul>
         </nav>
     </header>
@@ -49,7 +49,7 @@
     padding: 0;
     justify-content: flex-end;
     flex-grow: 1;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .nav-links li{
     display: inline;

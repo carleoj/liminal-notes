@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       notes: [
-        { id: 1, title: "Vue Tips", content: "Use v-model to bind inputs easily." },
+        { id: 1, title: "School Tips", content: "Always pay attention to the adviser." },
         { id: 2, title: "Grocery List", content: "Apples, Bananas, Milk, Bread" },
         { id: 3, title: "Project Ideas", content: "Build a note app like Google Keep." },
         { id: 4, title: "Reminder", content: "Call John about Vue project." },
@@ -56,12 +56,12 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
-  padding: 13.5rem;
+  padding: 13.2rem;
   background-color: #f5f5f5;
 }
 
 .note-card {
-  background-color: #fff59d;
+  background-color: #fff27b;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -109,5 +109,9 @@ export default {
 
 .modal button:hover {
   background-color: #1565c0;
+}
+
+p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 </style>
