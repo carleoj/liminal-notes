@@ -18,6 +18,15 @@
         <button @click="closeModal">Close</button>
       </div>
     </div>
+
+    <div v-if="showAddModal" class="modal-overlay" @click.self="closeAddModal">
+      <div class="modal">
+        <h2>New Note</h2>
+
+        <button @click="closeModal">OK</button>
+      </div>
+    </div>
+    <button class="add-button" @click="showAddModal = true">+</button>
   </section>
 </template>
 
@@ -29,6 +38,11 @@ export default {
     return {
       notes: [],
       selectedNote: null,
+      showAddModal: false,
+      newNote: {
+        title: '',
+        content: ''
+      }
     };
   },
   mounted(){
@@ -37,7 +51,8 @@ export default {
   methods: {
     async fetchAllNotes() {
       try{
-        const res = await axios.get('/api/notes/3')
+        const user = JSON.parse(localStorage.getItem('user'));
+        const res = await axios.get(`http://localhost:3000/api/getNotesById/${user[0].id}`)
         this.notes = res.data
       }
       catch(error){
@@ -49,6 +64,7 @@ export default {
     },
     closeModal() {
       this.selectedNote = null;
+      this.showAddModal = false;
     },
     truncate(text, length) {
       return text.length > length ? text.slice(0, length) + "..." : text;
@@ -59,11 +75,12 @@ export default {
 
 <style scoped>
 .notes-grid {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
   padding: 13.2rem;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 }
 
 .note-card {
@@ -95,6 +112,7 @@ export default {
 }
 
 .modal {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: white;
   padding: 2rem;
   border-radius: 12px;
@@ -120,4 +138,26 @@ export default {
 p {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.add-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.add-button:hover {
+  background-color: #1565c0;
+}
+
+
 </style>

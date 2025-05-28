@@ -1,14 +1,31 @@
-  <script setup>
-  import Header from './components/Header.vue'
-  </script>
-
-  <template>
-    <div>
-      <Header />
+<template>
+  <div class="main-layout">
+    <Header />
+    <main class="main-content">
       <router-view />
-    </div>
-  </template>
+    </main>
+  </div>
+</template>
 
-  <style scoped>
+<script>
+import Header from './components/Header.vue';
 
-  </style>
+export default {
+  components: { Header }
+}
+</script>
+
+<style scoped>
+.main-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
