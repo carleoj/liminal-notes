@@ -76,12 +76,11 @@ export default {
       try {
         const user = JSON.parse(localStorage.getItem('user'));
         const payload = {
-          userId: user[0].id,
           title: this.newNote.title,
           content: this.newNote.content,
         };
 
-        await axios.post('http://localhost:3000/api/addNote', payload);
+        await axios.post(`http://localhost:3000/api/addNewNote/${user[0].id}`, payload);
         
         this.newNote.title = '';
         this.newNote.content = '';
@@ -102,11 +101,13 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
-  padding: 13.2rem;
+  padding: 10rem;
+  border: 1px solid black;
   background-color: rgb(240, 241, 201);
 }
 
 .note-card {
+  border: 1px solid black;
   background-color: #fff27b;
   padding: 1rem;
   border-radius: 8px;
