@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import NotesList from '@/components/NotesList.vue';
-import About from '@/components/About.vue';
 import Settings from '@/components/Settings.vue';
 import Login from '@/components/Login.vue';
 
@@ -8,11 +7,6 @@ const routes = [
   {
     path: '/notes',
     component: NotesList,
-    meta: { requiresAuth: true }
-  },
-  {
-    path: '/about',
-    component: About,
     meta: { requiresAuth: true }
   },
   {

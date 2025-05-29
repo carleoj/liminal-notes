@@ -22,10 +22,13 @@
     <div v-if="showAddModal" class="modal-overlay" @click.self="closeAddModal">
       <div class="modal">
         <h2>New Note</h2>
-
-        <button @click="closeModal">OK</button>
+        <input v-model="newNote.title" placeholder="Title" />
+        <textarea v-model="newNote.content" placeholder="Content"></textarea>
+        <button @click="addNote">Add</button>
+        <button @click="closeModal">Cancel</button>
       </div>
     </div>
+
     <button class="add-button" @click="showAddModal = true">+</button>
   </section>
 </template>
@@ -69,6 +72,26 @@ export default {
     truncate(text, length) {
       return text.length > length ? text.slice(0, length) + "..." : text;
     },
+    async addNote() {
+      try {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const payload = {
+          userId: user[0].id,
+          title: this.newNote.title,
+          content: this.newNote.content,
+        };
+
+        await axios.post('http://localhost:3000/api/addNote', payload);
+        
+        this.newNote.title = '';
+        this.newNote.content = '';
+        this.showAddModal = false;
+
+        await this.fetchAllNotes(); // Refresh the notes list
+      } catch (error) {
+        console.error('Add note error:', error);
+      }
+    }
   },
 };
 </script>
@@ -80,7 +103,7 @@ export default {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1rem;
   padding: 13.2rem;
-  background-color: #ffffff;
+  background-color: rgb(240, 241, 201);
 }
 
 .note-card {
@@ -143,7 +166,7 @@ p {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background-color: #1976d2;
+  background-color: rgb(47, 157, 91);
   color: white;
   border: none;
   font-size: 2rem;
@@ -156,7 +179,7 @@ p {
 }
 
 .add-button:hover {
-  background-color: #1565c0;
+  background-color: rgb(33, 130, 72);
 }
 
 

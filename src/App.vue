@@ -19,6 +19,7 @@ export default {
 .main-layout {
   min-height: 100vh;
   display: flex;
+  background-color: rgb(240, 241, 201);
   flex-direction: column;
 }
 
