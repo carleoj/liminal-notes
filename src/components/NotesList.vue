@@ -54,9 +54,14 @@ export default {
   methods: {
     async fetchAllNotes() {
       try{
-        const user = JSON.parse(localStorage.getItem('user'));
-        const res = await axios.get(`http://localhost:3000/api/getNotesById/${user[0].id}`)
-        this.notes = res.data
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error("No token found, please login.");
+        const res = await axios.get(`http://localhost:3000/api/getNotesById`,{
+          headers: {
+            Authorization: `Bearer ${token}` 
+          }
+        })
+        this.notes = res.data.data
       }
       catch(error){
         console.error('Fetch error:', error)
@@ -70,17 +75,24 @@ export default {
       this.showAddModal = false;
     },
     truncate(text, length) {
+      if (!text) return '';
       return text.length > length ? text.slice(0, length) + "..." : text;
     },
     async addNote() {
       try {
-        const user = JSON.parse(localStorage.getItem('user'));
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error("No token found, please login.");
+
         const payload = {
           title: this.newNote.title,
           content: this.newNote.content,
         };
 
-        await axios.post(`http://localhost:3000/api/addNewNote/${user[0].id}`, payload);
+         await axios.post('http://localhost:3000/api/addNewNote', payload, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         
         this.newNote.title = '';
         this.newNote.content = '';
@@ -93,6 +105,7 @@ export default {
     }
   },
 };
+
 </script>
 
 <style scoped>
