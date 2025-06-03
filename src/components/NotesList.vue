@@ -196,5 +196,31 @@ p {
   background-color: rgb(33, 130, 72);
 }
 
-
+@media (max-width: 900px) {
+  .notes-grid {
+    padding: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .notes-grid {
+    padding: 0.5rem;
+    grid-template-columns: 1fr;
+  }
+  .note-card {
+    font-size: 1rem;
+    padding: 0.7rem;
+  }
+  .add-button {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .modal {
+    padding: 1rem;
+    max-width: 95vw;
+  }
+}
 </style>

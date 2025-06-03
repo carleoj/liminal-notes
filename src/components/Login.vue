@@ -107,7 +107,6 @@ export default {
 </script>
 
 <style scoped>
-/* Your existing styles remain unchanged */
 .form {
   background-color: #fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -183,5 +182,21 @@ export default {
 
 .signup-link a {
   text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .form {
+    width: 98vw;
+    padding: 0.5rem;
+    box-shadow: none;
+    border-radius: 0.3rem;
+  }
+  .form-title {
+    font-size: 1rem;
+  }
+  .submit {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
 }
 </style>

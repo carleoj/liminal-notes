@@ -15,7 +15,7 @@ export default {
   mounted() {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user && user.length > 0) {
-      this.userName = user[0].name || 'User';
+      this.userName = user.name || 'User';
     }
   }
 };
@@ -33,5 +33,14 @@ export default {
   padding: 10px;
   color: #216e36;
   border:#333 solid 1px
+}
+
+@media (max-width: 600px) {
+  .greeting {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+    padding: 6px;
+  }
 }
 </style>

@@ -29,4 +29,11 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 0.5rem;
+    align-items: flex-start;
+  }
+}
 </style>

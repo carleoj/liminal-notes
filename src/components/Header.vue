@@ -103,4 +103,27 @@ export default {
 .nav-links a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 0.7rem;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .logo {
+    font-size: 1.1rem;
+  }
+  .nav-links {
+    gap: 1rem;
+    font-size: 1rem;
+  }
+  .greeting {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+}
 </style>
