@@ -29,6 +29,12 @@ app.use('/api', notesRoutes)
 const errorHander = require('./middleware/errorHandler')
 app.use(errorHander)
 
+
+app.get('/test', (req, res) => {
+  res.send('Server running')
+})
+
+
 const PORT = 3000
 
 app.listen(PORT, () => {
